@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            KipIntach
+        </ion-title>
+        <span class="logo">
+            <img class="app-icon" src="assets/img/kipintach.png" alt="K" height="43">
+        </span>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm, login)" autocomplete="off" >
+        <div class="card padding" ng-show="errors.length">
+            <p ng-repeat="error in errors track by $index">{{error}}</p>
+        </div>
+        <ion-row>
+            <ion-col offset-10 width-80>
+                <input class="input-login" type="text" required name="username" lowercased placeholder="Email / Usuario" [(ngModel)]="login.username" autocomplete="off" />
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col offset-10 width-80>
+                <input class="input-login" type="password" required name="password" placeholder="Password" [(ngModel)]="login.password" />
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col offset-10 width-80>
+                <p class="forget-password">
+                    <a [navPush]="forgotPage">¿Olvidaste tu contraseña?</a>
+                </p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col offset-10 width-80>
+                <button type="submit" ion-button block class="button-join">Ingresar</button>
+            </ion-col>
+        </ion-row>
+    </form>
+    <ion-row class="social-login">
+        <ion-col width-50 class="twitter">
+            <a >
+                <img src="assets/img/icons/login-twitter.png">
+            </a>
+        </ion-col>
+        <ion-col width-50 class="facebook">
+            <a ng-click="loginFacebook()">
+                <img src="assets/img/icons/login-facebook.png">
+            </a>
+        </ion-col>
+    </ion-row>
+    
+    <div class="social-login-alert">
+        <span class="twitter">Ingresar utilizando</span> <span class="facebook">las redes sociales</span>
+    </div>
+    {{ log}}
+    <a ion-button full ass="login-register" [navPush]="registerPage">Registrarme</a>
+</ion-content>

@@ -1,0 +1,7 @@
+<ion-content>
+    <ion-tabs tabsPlacement="top" tabsHighlight="true" tabsLayout="icon-top">
+        <ion-tab [root]="groupListTabClose" [rootParams]="{list:'close'}" tabUrlPath='close' tabTitle="CERCA" tabIcon="compass"></ion-tab>
+        <ion-tab [root]="groupListTabFavourite" [rootParams]="{list:'favourite'}" tabUrlPath='favourite' tabTitle="FAVORITOS" tabIcon="heart"></ion-tab>
+        <ion-tab [root]="groupListTabOwn" [rootParams]="{list:'own'}" tabUrlPath='my-groups' tabTitle="MIS GRUPOS" tabIcon="add-circle"></ion-tab>
+    </ion-tabs>
+</ion-content>

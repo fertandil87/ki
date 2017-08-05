@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Registrarme</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <header class="register">
+        <img src="assets/img/kipintach_text.png" alt="KIPINTACH - A new way to communicate" />
+    </header>
+    <h1 class="register-title">
+        <i class="ion-compose"></i> NUEVA CUENTA
+    </h1>
+    <p class="register-message">
+        <span>Gracias por usar KipIntach. Por el momento tu cuenta</span>
+        <span>solo se podra utilizar en un disposito a la vez.</span>
+    </p>
+    <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm, register)" autocomplete="off">
+
+        <div class="register-form">
+            <ion-input type="email" #email="ngModel" lowercased required name="email" 
+                       placeholder="Email" autocomplete="off" [(ngModel)]="register.email"></ion-input>
+            <p *ngIf="result && result.fields && result.fields.email.hasError" class="error">
+                <span ng-repeat="error in result.fields.email.errors">{{error}}</span>
+            </p>
+            <div *ngIf="(email.errors && (email.dirty || email.touched))" class="alert alert-danger error">
+                <pre>{{email.errors|json}}</pre>
+                <div [hidden]="!email.errors.required">
+                    El email es requerido
+                </div>
+                <div [hidden]="!email.errors.email">
+                    Formato del email invalido
+                </div>
+            </div>
+
+            <ion-input type="text" #username="ngModel" required name="username" placeholder="Nombre de usuario" 
+                       autocomplete="off" pattern="{{usernameFormat}}" [(ngModel)]="register.username"></ion-input>
+
+            <p *ngIf="result && result.fields && result.fields.username.hasError" class="error">
+                <span ng-repeat="error in result.fields.username.errors">{{error}}</span>
+            </p>
+            <pre>{{username.errors|json}}</pre>
+            <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger error">
+                <div [hidden]="!username.errors.required">
+                    El nombre de usuario es requerido
+                </div>
+                <div [hidden]="!username.errors.pattern">
+                    Formato del nombre de usuario es invalido
+                </div>
+            </div>
+
+
+            <ion-input type="password" #password="ngModel" required name="password" 
+                       pattern="{{usernameFormat}}" minlength="6" maxlength="24" 
+                       autocomplete="off" placeholder="Contraseña" [(ngModel)]="register.password" ></ion-input>
+            <p *ngIf="result && result.fields && result.fields.password.hasError" class="error">
+                <span ng-repeat="error in result.fields.password.errors">{{error}}</span>
+            </p>
+            <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger error">
+                <div [hidden]="!password.errors.required">
+                    El password es requerido.
+                </div>
+                <div [hidden]="!password.errors.pattern">
+                    Formato del password no soportado, use solo letras y numeros.
+                </div>
+                <div [hidden]="!password.errors.minlength">
+                    Name must be at least 6 characters long.
+                </div>
+                <div [hidden]="!password.errors.maxlength">
+                    Name cannot be more than 24 characters long.
+                </div>
+            </div>
+
+            <ion-input type="password" #repassword="ngModel" required name="repassword" 
+                       pattern="{{usernameFormat}}" minlength="6" maxlength="24" autocomplete="off"
+                       autocomplete="off" placeholder="Repita Password" [(ngModel)]="register.repassword" ></ion-input>
+            <div *ngIf="result && result.fields && repassword.errors && (repassword.dirty || repassword.touched)" class="alert alert-danger error">
+                <div [hidden]="!repassword.errors.required">
+                    La confirmacion es requerida
+                </div>
+            </div>
+            <p *ngIf="password !== '' && repassword !== '' && repassword.dirty && register.password !== register.repassword" class="error">
+                Las claves no coinciden
+            </p>
+
+            <button class="button button-block button-join" type="submit" 
+                [disabled]="!registerForm.form.valid || (register.password !== register.repassword)" >Crear Cuenta</button>
+        </div>
+    </form>
+</ion-content>

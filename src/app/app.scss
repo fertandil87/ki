@@ -1,0 +1,107 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@font-face {
+    font-family: 'KipintachIcons';
+    font-weight: normal;
+    font-style: normal;
+    src:url('../assets/fonts/KipintachIcons.eot?gik0zf');
+    src:url('../assets/fonts/KipintachIcons.eot?gik0zf#iefix') format('embedded-opentype'),
+        url('../assets/fonts/KipintachIcons.ttf?gik0zf') format('truetype'),
+        url('../assets/fonts/KipintachIcons.woff?gik0zf') format('woff'),
+        url('../assets/fonts/KipintachIcons.svg?gik0zf#KipintachIcons') format('svg');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../assets/fonts/Roboto-300/Roboto-300.eot');
+    src: url('../assets/fonts/Roboto-300/Roboto-300.eot?#iefix') format('embedded-opentype'),
+        local('Roboto Light'),
+        local('Roboto-300'),
+        url('../assets/fonts/Roboto-300/Roboto-300.woff2') format('woff2'),
+        url('../assets/fonts/Roboto-300/Roboto-300.woff') format('woff'),
+        url('../assets/fonts/Roboto-300/Roboto-300.ttf') format('truetype'),
+        url('../assets/fonts/Roboto-300/Roboto-300.svg#Roboto') format('svg');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-style: normal;
+    src: url('../assets/fonts/Roboto-regular/Roboto-regular.eot');
+    src: url('../assets/fonts/Roboto-regular/Roboto-regular.eot?#iefix') format('embedded-opentype'),
+        local('Roboto'),
+        local('Roboto-regular'),
+        url('../assets/fonts/Roboto-regular/Roboto-regular.woff2') format('woff2'),
+        url('../assets/fonts/Roboto-regular/Roboto-regular.woff') format('woff'),
+        url('../assets/fonts/Roboto-regular/Roboto-regular.ttf') format('truetype'),
+        url('../assets/fonts/Roboto-regular/Roboto-regular.svg#Roboto') format('svg');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-style: normal;
+    src: url('../assets/fonts/Roboto-500/Roboto-500.eot');
+    src: url('../assets/fonts/Roboto-500/Roboto-500.eot?#iefix') format('embedded-opentype'),
+        local('Roboto Medium'),
+        local('Roboto-500'),
+        url('../assets/fonts/Roboto-500/Roboto-500.woff2') format('woff2'),
+        url('../assets/fonts/Roboto-500/Roboto-500.woff') format('woff'),
+        url('../assets/fonts/Roboto-500/Roboto-500.ttf') format('truetype'),
+        url('../assets/fonts/Roboto-500/Roboto-500.svg#Roboto') format('svg');
+}
+
+a{
+    cursor: pointer;
+}
+
+ion-header{
+    .toolbar-background {
+        color: #fff;
+        background: -webkit-linear-gradient(#f82929, #c71f1f);
+        background: -o-linear-gradient(#f82929, #c71f1f);
+        background: -moz-linear-gradient(#f82929, #c71f1f);
+        background: linear-gradient(#f82929, #c71f1f);
+    }
+    .toolbar-title {
+        color: #fff;
+    }
+    .toolbar-content .logo {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+    }
+    .toolbar-content .logo img{
+        height: 100%;
+    }
+}
+
+.content{
+    background-color: #eff4f2;
+    .item{
+        background-color: transparent;;
+    }
+    
+}
+
+.tabs .tab-button[aria-selected=true] .tab-button-icon {
+    color: #fff;
+}

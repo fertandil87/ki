@@ -1,0 +1,82 @@
+<ion-content>   
+    <form #form="ngForm" (ngSubmit)="handleCreateGroup(form, group)" autocomplete="off">
+        <ion-card>
+            <ion-card-header>NUEVO GRUPO</ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-label stacked>Nombre del grupo</ion-label>
+                        <ion-input #name="ngModel" type="text" required="" name="name" placeholder="Nombre del Grupo" [(ngModel)]="group.name"></ion-input>
+                    </ion-item>
+                    <p *ngIf="result && result.fields && result.fields.name.hasError" class="error">
+                        <span ng-repeat="error in result.fields.name.errors">{{error}}</span>
+                    </p>
+                    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger error">
+                        <div [hidden]="!name.errors.required">
+                            El Nombre del Grupo es requerido.
+                        </div>
+                    </div>
+                    <ion-item>
+                        <ion-range #radius="ngModel" name="radius" min="100" max="1000" 
+                            placeholder="Radio" step="50" pin="false" color="secondary" [(ngModel)]="group.radius">
+                            <ion-label range-left>100m.</ion-label>
+                            <ion-label range-right>1km.</ion-label>
+                        </ion-range>
+                    </ion-item>
+                    <div padding-left class="item item-text-wrap">
+                        <span class="help-text">
+                            Podran acceder al grupo a                              
+                            <span [hidden]="group.radius >= 1000">{{group.radius}}</span>
+                            <span [hidden]="group.radius < 1000">{{group.radius / 1000}}</span>
+                            <span [hidden]="group.radius >= 1000"> Metros </span>
+                            <span [hidden]="group.radius < 1000"> Kilometros </span>
+                            de distancia.
+                        </span>
+                    </div>
+                    <div padding-left class="item item-text-wrap">
+                        <span class="help-text">
+                            El grupo se va a crear en tu posicion actual.
+                        </span>
+                    </div>
+                    <ion-item>
+                        <ion-label>Acceso</ion-label>
+                        <ion-select [(ngModel)]="group.access" #access="ngModel" name="access">
+                            <ion-option value="private">Privado</ion-option>
+                            <ion-option value="public">Publico</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+
+                <ion-list *ngIf="group.access === 'private'">
+                    <ion-item>
+                        <ion-label>Clave</ion-label>
+                        <ion-input #password="ngModel" type="text" name="password" pattern="{{passwordFormat}}" 
+                            placeholder="Clave opcional" [(ngModel)]="group.password"
+                            minlength="3" maxlength="8" ></ion-input>
+                    </ion-item>
+                    <p *ngIf="result && result.fields && result.fields.password.hasError" class="error">
+                        <span ng-repeat="error in result.fields.password.errors">{{error}}</span>
+                    </p>
+                    <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger error">
+                        <div [hidden]="!password.errors.required">
+                            El password es requerido.
+                        </div>
+                        <div [hidden]="!password.errors.pattern">
+                            Formato del password no soportado, use solo letras y numeros.
+                        </div>
+                        <div [hidden]="!password.errors.minlength">
+                            Name must be at least 3 characters long.
+                        </div>
+                        <div [hidden]="!password.errors.maxlength">
+                            Name cannot be more than 8 characters long.
+                        </div>
+                    </div>
+                </ion-list>
+                <button [disabled]="!form.form.valid" color="danger" type="submit" ion-button full class="button-update">
+                    Crear Grupo
+                </button>
+
+            </ion-card-content>
+        </ion-card>
+    </form>
+</ion-content>

@@ -1,0 +1,136 @@
+<ion-content>
+    
+    <form #form="ngForm" (ngSubmit)="updateData(form, config)" autocomplete="off">
+        <div data-alert class="alert-box alert" *ngIf="result.error">
+            {{ result.error}}
+        </div>
+        <ion-card>
+            <ion-card-header>DATOS PERSONALES</ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-label stacked>Nombre de usuario</ion-label>
+                        <ion-input #username="ngModel" type="text" disabled name="username" placeholder="Nombre de usuario" [(ngModel)]="config.username"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Nombre para mostrar</ion-label>
+                        <ion-input #name="ngModel" type="text" required="" name="name" placeholder="Nombre de usuario" [(ngModel)]="config.name"></ion-input>
+                    </ion-item>
+                    <p *ngIf="result && result.fields && result.fields.name.hasError" class="error">
+                        <span ng-repeat="error in result.fields.name.errors">{{error}}</span>
+                    </p>
+                    <div *ngIf="name.errors && (name.dirty || name.touched)" class="error">
+                        <div [hidden]="!name.errors.required">
+                            El Nombre de Usuario es requerido.
+                        </div>
+                    </div>
+                    <ion-item>
+                        <ion-label stacked>Email</ion-label>
+                        <ion-input #email="ngModel" type="email" required="" name="email" placeholder="john@suhr.com" [(ngModel)]="config.email"></ion-input>
+                    </ion-item>
+                    <p *ngIf="result && result.fields && result.fields.email.hasError" class="error">
+                        <span ng-repeat="error in result.fields.email.errors">{{error}}</span>
+                    </p>
+                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="error">
+                        <div [hidden]="!email.errors.required">
+                            El Nombre de Usuario es requerido.
+                        </div>
+                    </div>
+                    <div padding-left class="item item-text-wrap">
+                        <span class="help-text">
+                            Si modifica el email, debera volver a validar su cuenta. 
+                            Y su sesión se cerrara automaticamente.
+                        </span>
+                    </div>
+                    <ion-item >
+                        <ion-label> Mostrar mi ubicacion en el mapa</ion-label>
+                        <ion-toggle disabled checked="false" name="showposition" color="secondary" [(ngModel)]="config.showposition"></ion-toggle>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>ALCANCE DE LOS MENSAJES</ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+
+                        <ion-range #radius="ngModel" name="radius" min="200" max="10000" 
+                            placeholder="Radio" step="200" pin="false" color="secondary" [(ngModel)]="config.radius">
+                            <ion-label range-left>200m.</ion-label>
+                            <ion-label range-right>10km.</ion-label>
+                        </ion-range>
+                    </ion-item>
+                    <div padding-left class="item item-text-wrap">
+                        <span class="help-text">
+                            Podras ver mensajes a                             
+                            <span [hidden]="config.radius >= 1000">{{config.radius}}</span>
+                            <span [hidden]="config.radius < 1000">{{config.radius / 1000}}</span>
+                            <span [hidden]="config.radius >= 1000"> Metros </span>
+                            <span [hidden]="config.radius < 1000"> Kilometros </span>
+                            de distancia.
+                        </span>
+                    </div>
+                    <ion-item>
+                        <ion-label> Leer mensajes de grupos en los chat publicos</ion-label>
+                        <ion-toggle name="joingroups" color="secondary" [(ngModel)]="config.joingroups"></ion-toggle>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>CAMBIO DE CLAVE</ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Nueva Clave</ion-label>
+                        <ion-input type="password" #pass="ngModel" name="pass" floating
+                                   pattern="{{passwordFormat}}" minlength="6" maxlength="24" 
+                                   autocomplete="off" placeholder="Contraseña" [(ngModel)]="config.password" ></ion-input>
+                    </ion-item>
+                    <p *ngIf="result && result.fields && result.fields.pass.hasError" class="error">
+                        <span ng-repeat="error in result.fields.pass.errors">{{error}}</span>
+                    </p>
+                    <div *ngIf="pass.errors && (pass.dirty || pass.touched)" class="error">
+                        <div [hidden]="!pass.errors.required">
+                            El password es requerido.
+                        </div>
+                        <div [hidden]="!pass.errors.pattern">
+                            Formato del password no soportado, use solo letras y numeros.
+                        </div>
+                        <div [hidden]="!pass.errors.minlength">
+                            Name must be at least 6 characters long.
+                        </div>
+                        <div [hidden]="!pass.errors.maxlength">
+                            Name cannot be more than 24 characters long.
+                        </div>
+                    </div>
+                    <ion-item>
+                        <ion-label>Repetir Clave</ion-label>
+                        <ion-input type="password" #repass="ngModel" name="repass" 
+                                   pattern="{{passwordFormat}}" minlength="6" maxlength="24" 
+                                   autocomplete="off" placeholder="Repita Password" [(ngModel)]="config.repassword" ></ion-input>
+                    </ion-item>
+                    <div *ngIf="result && result.fields && repass.errors && (repass.dirty || repass.touched)" class="alert alert-danger error">
+                        <div [hidden]="!repass.errors.required">
+                            La confirmacion es requerida
+                        </div>
+                    </div>
+                    <p *ngIf="config.password !== '' && config.repassword !== '' && repass.dirty && config.password !== config.repassword" class="error">
+                        Las claves no coinciden
+                    </p>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+        <button [disabled]="!form.form.valid || (config.password !== config.repassword)" 
+            type="submit" ion-button full class="button-update">
+            <i class="ion-loop"></i>&nbsp;&nbsp;Actualizar
+        </button>
+    </form>
+    <br/>
+    <br/>
+    <button type="submit" (click)="logout()" ion-button full class="button-logout">
+        <ion-icon name="exit"></ion-icon>&nbsp;&nbsp;Cerrar Sesión
+    </button>
+
+</ion-content>

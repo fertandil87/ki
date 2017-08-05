@@ -1,0 +1,23 @@
+main-page {
+    .scroll-content {
+        overflow-y: auto;
+    }
+    .toolbar-background-md{
+        background-color: red;
+    }
+
+}
+.tabs {
+    .tab-button[aria-selected=true] {
+        color: #fff;
+        background: -webkit-linear-gradient(#3598db, #207acc);
+        background: -o-linear-gradient(#3598db, #207acc);
+        background: -moz-linear-gradient(#3598db, #207acc);
+        background: linear-gradient(#3598db, #207acc);
+    }
+
+    .tabbar .tab-highlight {
+        background: #e84c3d;
+
+    }
+}

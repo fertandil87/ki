@@ -1,0 +1,83 @@
+input.input-login{
+    width: 100%;
+    border: 2px solid #e5e1e1;
+    border-radius: 7px;
+    height: 50px;
+    padding-left: 35px;
+    /*-webkit-box-shadow: 0 0 0px 1000px white inset;*/
+    background: #fff url(../assets/img/icons/login-username.png) no-repeat scroll 95% center;
+    margin-top: 45px;
+}
+
+input.input-login[type="password"]{
+    background-image: url(../assets/img/icons/login-password.png);
+    margin-top: 15px;
+}
+
+.button-join{
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: 200;
+    font-size: 30px;
+    border: 2px solid #fff;
+    box-shadow: 0px 4px 20px #777;
+    opacity: 0.9;
+    color: #fff;
+    border-radius: 7px;
+    background: #df2424; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#f72929, #c91f1f); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f72929, #c91f1f); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f72929, #c91f1f); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f72929, #c91f1f); /* Standard syntax */
+    line-height: 50px;
+    margin-top: 0;
+}
+.button-join:hover{
+    box-shadow: 0px 2px 10px #777;
+    opacity: 1;
+    color: #fff;
+}
+
+.forget-password{
+    line-height: 60px;
+    text-align: center;
+    margin: 0;
+}
+.forget-password a{
+    color: #de2323;
+    font-size: 1.5em;
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: 200;
+    text-decoration: none;
+}
+.forget-password a:hover{
+    font-weight: 400;   
+}
+.social-login .twitter{
+    text-align: right;
+}
+.social-login .facebook{
+    text-align: left;
+}
+.social-login a img{
+    max-width: 100%;
+}
+.social-login-alert{
+    text-align: center;
+}
+.social-login-alert .twitter{
+    color: #21aae1;
+}
+.social-login-alert .facebook{
+    color: #165aa0;
+}
+.login-register{
+    background-color: #de2323;
+    font-weight: 400;
+    font-size: 1.5em;
+    text-align: center;
+    height: 75px;
+    font-family: Roboto, Arial, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    line-height: 75px;
+}

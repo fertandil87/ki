@@ -1,0 +1,56 @@
+page-account {
+    .content{
+        background-color: #eff4f2;
+    }
+
+    .user-avatar img{
+        max-width: 100%;
+    }
+    .card { 
+        box-shadow: none;
+        background-color: #eff4f2;
+        
+        .card-content{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .card-header{
+            font-family: Roboto, Arial, sans-serif;
+            font-weight: 500;
+            font-size: 17px;
+            border: 1px solid #b8bcbb;
+            border-radius: 0px;
+            padding:12px 12px 12px 25px;
+            background: #444;
+            color: #fff;
+        }
+        .list{
+            .item{
+                
+                .label{
+                    font-family: Roboto, Arial, sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #000;
+                }
+                span.help-text{
+                    color: #444;
+                    font-family: Roboto, Arial, sans-serif;
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+            }
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            padding: 10px 0 0 10px;
+            margin: 0;
+        }
+    }
+    
+    .button-logout{
+        background-color: #262626;
+    }
+
+}

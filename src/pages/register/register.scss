@@ -1,0 +1,90 @@
+header.register{
+    padding: 22px 0px 13px;
+    text-align: center;
+    border-top: 21px solid #de2323;
+    border-bottom: 18px solid #de2323;
+    background-color: #fff;
+}
+
+header.register img{
+    max-width: 90%;
+}
+
+.register-title{
+    border: 2px solid #de2323;
+    color: #de2323;
+    font: bold 39px Arial;
+    width: 90%;
+    max-width: 800px;
+    padding: 21px 35px;
+    border-radius: 10px;
+    margin: 100px auto 22px;
+    text-align: center;
+}
+
+.register-message{
+    font: 14px Arial;
+    color: #333333;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto 10px;
+}
+
+.register-form{
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.register-form input{
+    padding: 0 15px 0 32px;
+    color: #333;
+    font: 32px Arial;
+    border: 2px solid #e5e1e1;
+    line-height: 82px;
+    margin-top: 15px;
+    height: auto;
+    border-radius: 7px;
+    width: 100%;
+}
+.register-form input.ng-invalid-email.ng-touched,
+.register-form input.ng-invalid.ng-touched{
+    border-color: #de2323;
+}
+.register-form ion-input:first-child input{
+    margin-top: 0;
+}
+.register-form .error{
+    color: red;
+    font-size: 14px;
+    padding: 10px 0 0 10px;
+    margin: 0;
+}
+
+.register-form input::-webkit-input-placeholder,
+.register-form input::-moz-placeholder, /* firefox 19+ */
+.register-form input:-ms-input-placeholder, /* ie */
+.register-form input:-moz-placeholder { 
+    color:#d5c9ba; 
+}
+
+
+@media all and (min-width: 450px) and (max-width: 690px) {
+    .register-message span{
+        display: block;
+    }
+}
+
+@media all and (max-width: 470px) {
+    .register-form input{
+        line-height: 45px;
+        font-size: 20px;
+    }
+    .register-title{
+        font: 28px Arial;
+        display: table;
+        padding: 12px;
+        border-radius: 10px;
+        margin: 35px auto 11px;
+    }
+}

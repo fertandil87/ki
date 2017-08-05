@@ -1,0 +1,113 @@
+page-chat{
+    
+    ion-footer{
+        &:before{
+            display: none;
+        }
+        background-color: transparent;
+        border-top: none;
+        .list{
+            margin: -1px 0 0;
+            
+            .item{
+                padding-left: 5px;
+                background-color: transparent;
+                
+                .label{
+                    margin: 0;
+                    border: 1px solid #cecece;
+                    background: #fff;
+                    
+                    textarea{
+                        width: 98%;
+                        word-break: break-all;
+                        resize: none;
+                        max-height: 150px;
+                        font-family: Roboto, Arial, sans-serif;
+                        font-weight: 300;
+                        color: #777;
+                        font-size: 15px;
+                        padding: 1%;
+                        line-height: 16px;
+                        resize: none;
+                        box-sizing: content-box;
+                        border: 0;
+                    }
+                }
+                
+                .button{
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+
+    .chat-block{
+        overflow: hidden;
+    }
+    .chat-block .col-picture{
+        position: relative;
+        text-align: center;
+    }
+    .chat-block .col-picture .img-circle {
+        border-radius: 50%;
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        right: 0;
+    }
+    .chat-block span.user-message{
+        font-family: Roboto, Arial, sans-serif;
+        font-weight: 300;
+        color: #000;
+        font-size: 12px;
+    }
+    .chat-block small.user-message{
+        font-family: Roboto, Arial, sans-serif;
+        font-weight: 400;
+        font-size: 9px;
+    }
+    .chat-block h2.name{
+        font-family: Roboto, Arial, sans-serif;
+        font-weight: 500;
+        color: #000;
+        font-size: 14px;
+    }
+    .chat-block h2.name .details{
+        font-family: Arial, sans-serif;
+        color: #b5b6b8;
+        font-size: 11px;
+        font-family: Roboto, Arial, sans-serif;
+        font-weight: 400;
+    }
+    
+    .message-container{
+        background-color: #e6e5e1;
+    }
+    .message-container textarea{
+        border: 1px solid #cecece;
+    }
+    textarea.newMessage{
+        width: 100%;
+        word-break: break-all;
+        resize: none;
+        max-height: 150px;
+        font-family: Roboto, Arial, sans-serif;
+        font-weight: 300;
+        color: #777;
+        font-size: 15px;
+        padding-left: 5px;
+        line-height: 16px;
+        resize: none;
+        box-sizing: content-box;
+    }
+    .bar-footer{
+        background-color: #e6e5e1;
+        border-top: 1px solid #a1a1a1;
+    }
+    .bar-footer .item-input-inset, .bar-footer .item-input-inset label{
+        background-color: #e6e5e1;
+        border: 0px;
+    }
+
+}

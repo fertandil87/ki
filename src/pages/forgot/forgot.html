@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Recuperar Contraseña</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form name="form" ng-submit="handleForgot(form, forgot)" autocomplete="off" >
+        <div class="card padding" ng-show="errors.length">
+            <p ng-repeat="error in errors track by $index">{{error}}</p>
+        </div>
+        
+        <ion-row>
+            <ion-col offset-10 width-80>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="email" required name="username" lowercased placeholder="Email" ng-model="email" autocomplete="off" ></ion-input>
+            </ion-col>
+        </ion-row>
+        
+        <div class="row">
+            <div class="col-offset-10 col-80">
+                <button type="submit" ng-disabled="form.$invalid" class="button button-block button-join">Enviar</button>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-offset-10 col-80">
+            <p class="forget-password">
+                <a href="#/register">¿No tienes cuenta?</a>
+            </p>
+            <p class="forget-password">
+                <a navPop>Volver al Login</a>
+            </p>
+        </div>
+    </div>
+
+</ion-content>

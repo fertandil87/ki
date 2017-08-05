@@ -1,0 +1,71 @@
+<ion-content on-scroll-complete="setAutoScrollTimer()">
+    <ion-list class="item-text-wrap">
+        <ion-item *ngFor="let user of messages" type="item-text-wrap" ng-class="{'me':user.id == me}">
+            <ion-row class="chat-block">
+                <ion-col col-1 class="col-picture">
+                    <img *ngIf="user.photo" class="img-circle" src="data:image/jpeg;base64,{{user.photo}}" alt="profile picture" on-hold="showUserDetails(user)"/>
+                </ion-col>
+                <ion-col>
+                    <h2 class="name" on-hold="showUserDetails(user)">{{ user.name}} <span class="details"> | {{ timeAgo(user.messages[user.messages.length - 1].date)}} - {{ user.messages[user.messages.length - 1].distance.distance}} {{ user.messages[user.messages.length - 1].distance.unit}}</span></h2>
+                    <p *ngFor="let message of user.messages">
+                        <span class="user-message">{{message.text}}</span> 
+                        <small class="user-message">({{(message.date)|date:'h:mm a'}} - {{ message.distance.distance}} {{ message.distance.unit}})</small>
+                    </p>
+                </ion-col>
+                <ion-col width-10 *ngIf="false">
+                    opt ions
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item  type="item-text-wrap" >
+            <ion-grid *ngIf="!messages.length && !missingLocation"> 
+                <ion-row>
+                    <ion-col col-1 class=" col-picture">
+                        <img class="img-circle" src="assets/img/picture.jpg" alt="profile picture"/>
+                    </ion-col>
+                    <ion-col class="chat-block">
+                        <h2 class="name">KipIntach Team</h2>
+                        <p>
+                            <span class="user-message">
+                                Bienvenido a Kipintach, escribe un mensaje para empezar a comunicarte 
+                                con otras personas cercanas a tu ubicacion. Tambien puedes ir a los AJUSTES 
+                                para cambiar el alcance de la gente con la que chateas. O bien ver que grupos 
+                                cercanos a tu ubicacion hay para chatear con gente especifica.<br/>
+                            </span> 
+                        </p>
+                    </ion-col>
+                    
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item  type="item-text-wrap" *ngIf="missingLocation">
+            Aun no detectamos su ubicacion, por favor espere. Se recomienda que active su GPS para una mejor ubicacion.
+            <br/>
+            <br/>
+            <button class="button button-block button-positive" ng-click="reloadChat()">Recargar</button>
+        </ion-item>
+        <a id="theBottom" style="height: 44px;width: 100%;display: block;"></a>
+    </ion-list>
+</ion-content>
+
+
+<ion-footer>
+    <form #postForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off" >
+        <div [hidden]="chatBox.length === 0" style="height: 50px;">
+            <ion-fab  right>
+                <button color="danger" ion-fab >
+                    <span class="button-inner">
+                        <ion-icon name="send" ></ion-icon>
+                    </span>
+                </button>
+            </ion-fab>
+           
+        </div>
+        <ion-list>
+            <!--Attempt 3-->
+            <ion-item>
+                <textarea type="text" [(ngModel)]="chatBox" placeholder="Mensaje..." name="message"></textarea>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-footer>

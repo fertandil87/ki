@@ -1,0 +1,45 @@
+<ion-content>
+    <a [navPush]="newGroupPage" *ngIf="newGroupPage">
+        <button ion-button round icon-only right color="danger" class="add-group">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </a>
+    <div class="group-list-details" no-padding>
+        <p *ngIf="groups.length" class="item-icon-right">
+            Mostrando {{ groups.length}} grupos.
+        </p>
+        <p  *ngIf="!groups.length">
+            No hay grupos para mostrar.<br/>
+            <a *ngIf="favourite" href="#/main/groups/close">Buscar un grupo cerca.</a>.<br/>
+            <a *ngIf="!showCreateButton" href="#/main/groups/form">Crear un grupo en la posicion actual.</a>.<br/>
+            <a *ngIf="showCreateButton" class="icon ion-edit icon-right" [navPush]="newGroupPage">crear</a>
+        </p>
+    </div>
+    <ion-grid *ngFor="let group of groups">
+        <ion-row class="group-item">
+            <ion-col class="main-details" icon-right>
+                <p>
+                    <a [navPush]="groupChatPage" [navParams]="{id:group.id}">{{group.name}} ({{group.id}})</a>
+                </p>
+                <p>
+                    Creado: {{ (group.created) | date:'d/M/yyyy'}}
+                </p>
+                <p>
+                    Integrantes: {{ 32}} | Distancia: {{ group.distance.distance}} {{ group.distance.unit}}
+                </p>
+                <span class="icon">
+                    <img alt="group logo" src="assets/img/group.jpg" height="44" width="44" />
+                </span>
+            </ion-col>
+            <ion-col width-10 class="options" (click)="openGroupOptions(group)">
+                <ion-icon name="settings"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" shouldEnable="shouldInfiniteScroll">
+        <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Buscando mas grupos...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

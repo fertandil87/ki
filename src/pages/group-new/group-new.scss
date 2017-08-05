@@ -1,0 +1,35 @@
+page-new-group{
+    .card {
+        box-shadow: none;
+        background-color: #eff4f2;
+
+        .card-header {
+            font-family: Roboto, Arial, sans-serif;
+            font-weight: 500;
+            font-size: 17px;
+            border: 1px solid #b8bcbb;
+            border-radius: 0px;
+            padding: 12px 12px 12px 25px;
+            background: #444;
+            color: #fff;
+        }
+        
+        .card-content{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .list {
+            .item { 
+                .help-text {
+                    color: #444;
+                    font-family: Roboto, Arial, sans-serif;
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+            }
+        }
+
+
+    }
+}

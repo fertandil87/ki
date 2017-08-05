@@ -1,0 +1,51 @@
+{
+  "name": "KipIntach",
+  "author": "Fernando Saez",
+  "homepage": "http://kipintach.com/",
+  "private": true,
+  "scripts": {
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
+  },
+  "dependencies": {
+    "@angular/common": "2.4.8",
+    "@angular/compiler": "2.4.8",
+    "@angular/compiler-cli": "2.4.8",
+    "@angular/core": "2.4.8",
+    "@angular/forms": "2.4.8",
+    "@angular/http": "2.4.8",
+    "@angular/platform-browser": "2.4.8",
+    "@angular/platform-browser-dynamic": "2.4.8",
+    "@angular/platform-server": "2.4.8",
+    "@ionic-native/background-geolocation": "^3.4.4",
+    "@ionic-native/core": "3.4.4",
+    "@ionic-native/geolocation": "^3.4.4",
+    "@ionic-native/splash-screen": "3.4.4",
+    "@ionic-native/status-bar": "^3.4.4",
+    "@ionic/storage": "2.0.1",
+    "ionic-angular": "2.3.0",
+    "ionicons": "3.0.0",
+    "rethinkdb": "^2.3.3",
+    "rxjs": "5.0.1",
+    "socket.io": "^1.6.0",
+    "sw-toolbox": "3.4.0",
+    "zone.js": "0.7.2"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "1.2.5",
+    "@ionic/cli-build-ionic-angular": "0.0.4",
+    "typescript": "2.0.9"
+  },
+  "description": "=KipIntach: talk with everyone anywhere",
+  "cordovaPlugins": [
+    "cordova-plugin-whitelist",
+    "ionic-plugin-keyboard",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-splashscreen"
+  ],
+  "cordovaPlatforms": []
+}
